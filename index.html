@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Teste Genérica</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        main {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        h1 { margin: 0; font-size: 24px; }
+        h2 { color: #2c3e50; margin-top: 0; }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .alert {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Página de Teste HTML5</h1>
+        <p>Um ficheiro genérico para validação de layout, CSS e scripts.</p>
+    </header>
+
+    <main>
+        <section id="texto">
+            <h2>1. Elementos de Texto</h2>
+            <p>Este é um parágrafo de teste padrão. Serve para verificar a legibilidade da fonte, o espaçamento entre linhas e as margens gerais do documento.</p>
+            <p>Pode incluir texto em <strong>negrito</strong>, <em>itálico</em>, ou até um <a href="#">link de exemplo</a> para testar a interatividade.</p>
+        </section>
+
+        <section id="elementos-form">
+            <h2>2. Componentes Interativos</h2>
+            <p>Clique no botão abaixo para testar a execução de funções JavaScript básicas.</p>
+            <button class="button" onclick="toggleAlert()">Testar Script (Alerta)</button>
+            <div id="demo-alert" class="alert">
+                <strong>Sucesso!</strong> O JavaScript básico está a funcionar corretamente nesta página.
+            </div>
+        </section>
+
+        <section id="lista">
+            <h2>3. Listas de Verificação</h2>
+            <ul>
+                <li>Item de lista não ordenada A</li>
+                <li>Item de lista não ordenada B</li>
+                <li>Item de lista não ordenada C</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Gerado automaticamente para fins de teste.</p>
+    </footer>
+
+    <script>
+        function toggleAlert() {
+            var alertDiv = document.getElementById('demo-alert');
+            if (alertDiv.style.display === 'none' || alertDiv.style.display === '') {
+                alertDiv.style.display = 'block';
+            } else {
+                alertDiv.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
