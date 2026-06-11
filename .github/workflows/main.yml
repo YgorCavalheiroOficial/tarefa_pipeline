@@ -1,14 +1,35 @@
 name: Pipeline Aula
 
-on:
-    push
-    
+on: push
+
 jobs:
-    teste:
-      runs-on: ubuntu-latest
-      
-      steps:
-        - uses: actions/checkout@v4
-        
-        - name: Mostrar mensagem
-          run: echo "Pipeline executado com sucesso!"
+  validar-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # REGRA 1: Validação de Sintaxe (HTMLHint)
+      - name: Regra 1 - Validar Sintaxe do HTML (HTMLHint)
+        uses: htmlhint/htmlhint-action@v2
+        with:
+          file_pattern: "*.html"
+
+      # REGRA 2: Verificação de Acessibilidade Básica (Linter de Atributos ALT)
+      - name: Regra 2 - Verificar Acessibilidade (Atributos ALT em Imagens)
+        run: |
+          if grep -E "<img" *.html | grep -qv "alt="; then
+            echo "ERRO: Encontrada uma imagem sem o atributo 'alt' de acessibilidade!"
+            exit 1
+          else
+            echo "Sucesso: Todas as imagens possuem o atributo 'alt' ou não existem imagens."
+          fi
+
+      # REGRA 3: Verificação de Links Quebrados (Lychee Link Checker)
+      - name: Regra 3 - Verificar Links Quebrados
+        uses: lycheeapp/lychee-action@v2
+        with:
+          args: "*.html"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
